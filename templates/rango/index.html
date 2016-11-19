@@ -5,16 +5,34 @@
     <meta charset="UTF-8">
     <title>Rango</title>
 </head>
+
 <body>
-    <h1>Rango says...</h1>
-    <div>
-        hey there partner!<br/>
-        <strong>{{ boldmessage }}</strong><br/>
-    </div>
-    <div>
-        <a href="/rango/amerika">el amerika wey</a><br/>
-        <img src="{% static "images/palmas.png" %}" alt="el logo del csi con palmas xd" />
-        <img src="{{ MEDIA_URL }}cat.jpg" alt="un gato to' loco" />
-    </div>
+<div>
+    {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li>
+                    {{ category.name }}
+                </li>
+                <div>
+                    {% if pages %}
+                        <ul>
+                            {% for page in pages %}
+   {% comment %}                             {{ page.category }}
+                                <strong>{{ category.name }}</strong>{% endcomment %}
+                                {% if page.category.name == category.name%}
+                                    <li>
+                                        {{ page.title }}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
 </body>
 </html>
