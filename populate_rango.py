@@ -51,7 +51,6 @@ def populate():
 
     # El codigo debajo recorre el diccionario 'cats', luego agrega cada categoria,
     # luego agrega todas las paginas asociadas en cada categoriaspeaker
-
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data["views"], cat_data["likes"])
         for p in cat_data["pages"]:
