@@ -6,33 +6,31 @@
     <title>Rango</title>
 </head>
 
-<body>
-<div>
-    {% if categories %}
-        <ul>
-            {% for category in categories %}
-                <li>
-                    {{ category.name }}
-                </li>
-                <div>
-                    {% if pages %}
-                        <ul>
-                            {% for page in pages %}
-   {% comment %}                             {{ page.category }}
-                                <strong>{{ category.name }}</strong>{% endcomment %}
-                                {% if page.category.name == category.name%}
-                                    <li>
-                                        {{ page.title }}
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
+    <body>
+        <div>
+            {% if categories %}
+                <ul>
+                    {% for category in categories %}
+                        <li>
+                            <a href="/rango/category/{{ category.slug }}">{{ category.name }}</a>
+                        </li>
+                        <div>
+                            {% if pages %}
+                                <ul>
+                                    {% for page in pages %}
+                                        {% if page.category.name == category.name %}
+                                            <li>
+                                                {{ page.title }}
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
 
-                    {% endif %}
-                </div>
-            {% endfor %}
-        </ul>
-    {% endif %}
-</div>
-</body>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </body>
 </html>
