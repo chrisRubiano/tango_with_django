@@ -10,11 +10,12 @@ from rango.models import Page
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     pages_list = Page.objects.order_by('views')
+    most_viewed_pages_list = Page.objects.order_by('-views')[:5]
     # for category in category_list:
     #     for page in pages_list:
     #         if category.name == page.category.name:
     #             print(page.category.name)
-    context_dict = {'categories': category_list, 'pages': pages_list}
+    context_dict = {'categories': category_list, 'pages': pages_list, 'most_viewed': most_viewed_pages_list}
     return render(request, 'rango/index.html', context=context_dict)
 
 

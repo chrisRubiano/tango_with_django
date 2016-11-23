@@ -8,6 +8,7 @@
 
     <body>
         <div>
+            <h1>Most liked categories</h1>
             {% if categories %}
                 <ul>
                     {% for category in categories %}
@@ -31,6 +32,19 @@
                     {% endfor %}
                 </ul>
             {% endif %}
+
+            <div>
+                <h1>Most viewed pages</h1>
+                {% if most_viewed %}
+                    <ul>
+                        {% for page in most_viewed %}
+                        <li>
+                            {{ page.title }} | {{ page.views }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
         </div>
     </body>
 </html>
