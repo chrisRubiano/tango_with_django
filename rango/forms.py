@@ -8,9 +8,9 @@ class CategoryForm(forms.ModelForm):
     likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0, required=False)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-    #inline class to include additional information on the form
+    # inline class to include additional information on the form
     class Meta:
-        #provide an association between the ModelForm and a model
+        # provide an association between the ModelForm and a model
         model = Category
         fields = ('name', )
 
@@ -21,9 +21,9 @@ class PageForm(forms.ModelForm):
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     class Meta:
-        #provide an association between the ModelForm and a model
+        # provide an association between the ModelForm and a model
         model = Page
-        exclude = ('category', )
+        exclude = ('category', 'views')
 
     def clean(self):
         cleaned_data = self.cleaned_data
