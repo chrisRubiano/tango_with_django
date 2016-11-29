@@ -1,20 +1,18 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rango</title>
-</head>
 
-    <body>
-        <div>
-            <a href="/rango/add_category/">Add a new category</a><br />
+{% block title_block %}
+Index
+{% endblock %}
+
+{% block body_block %}
+            <a href="{% url 'add_category' %}">Add a new category</a><br />
             <h1>Most liked categories</h1>
             {% if categories %}
                 <ul>
                     {% for category in categories %}
                         <li>
-                            <a href="/rango/category/{{ category.slug }}">{{ category.name }}</a>
+                            <a href="{% url 'show_category' category.slug %}">{{ category.name }}</a>
                         </li>
                         <div>
                             {% if pages %}
@@ -40,12 +38,10 @@
                     <ul>
                         {% for page in most_viewed %}
                         <li>
-                            {{ page.title }} | {{ page.views }}
+                            <a href="{{ page.url }}">{{ page.title }}</a> | {{ page.views }}
                         </li>
                         {% endfor %}
                     </ul>
                 {% endif %}
             </div>
-        </div>
-    </body>
-</html>
+{% endblock %}
