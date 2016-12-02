@@ -21,7 +21,6 @@ def index(request):
 
 def show_category(request, category_name_url):
     context_dict = {}
-
     try:
         category = Category.objects.get(slug=category_name_url)
         pages = Page.objects.filter(category=category)
@@ -35,7 +34,6 @@ def show_category(request, category_name_url):
 
 def add_category(request):
     form = CategoryForm()
-
     #a http post?
     if request.method == 'POST':
         form = CategoryForm(request.POST)
